@@ -1,0 +1,69 @@
+package contabancaria;
+
+import java.util.Scanner;
+
+public class ContaBancaria {
+
+    public static void Transferencia(Conta contaOrigem, Conta contaDestino,Conta limite){
+        Scanner entrada = new Scanner(System.in);
+        
+        
+        double digTranf, contaDest = contaDestino.getSaldo(), contaOr = contaOrigem.getSaldo();
+        
+        System.out.println("Qual valor deseja tranferir? \nSeu limite é de: " + limite.getLimite());
+        digTranf = entrada.nextDouble();
+        
+        if(digTranf <= limite.getLimite() && contaOrigem.getSaldo() >= digTranf){
+            contaOrigem.setSaldo(contaOr - digTranf);
+            contaDestino.setSaldo(contaDest + digTranf);
+        }else{
+            System.out.println("A operação não foi concluída");
+        }
+        
+        
+    }
+    
+    public static double SacarDinheiro(Conta conta){
+        Scanner entrada = new Scanner(System.in);
+        
+        double saldoAtual = conta.getSaldo(), digSaque;
+        
+        System.out.println("Quanto deseja sacar? \nO seu limite é de " + conta.getLimite());
+        digSaque = entrada.nextDouble();
+        
+        if(digSaque <= conta.getLimite() && digSaque <= conta.getSaldo()){
+            conta.setSaldo(saldoAtual - digSaque);
+            System.out.println("Saldo restante: " + saldoAtual);
+            
+            
+        }else{
+            System.out.println("O saque não permitido");
+        }
+        return saldoAtual;
+    }
+    
+    
+    public static void main(String[] args) {
+        
+        Cliente a1 = new Cliente("Lucas", "Rua A", "Masculino", 6000.00);
+        Cliente a2 = new Cliente("Samuel", "Rua Lagos", "Masculino", 8000.66);
+        Cliente a3 = new Cliente("Hashi", "Rua Sushi", "Masculino", 10000.88);
+        
+        Conta c1 = new Conta(215, a1, 18000, 2000, 500);
+        Conta c2 = new Conta(125, a2, 24000, 2200, 700);
+        Conta c3 = new Conta(512, a3, 30000, 2400, 900);
+        
+        SacarDinheiro(c3);
+        
+        Transferencia(c1, c2, c1);
+        
+        
+        System.out.println(c1.getConta());
+        System.out.println(c1.getSaldo());
+        
+        System.out.println(c2.getConta());
+        System.out.println(c2.getSaldo());
+        
+    }
+    
+}

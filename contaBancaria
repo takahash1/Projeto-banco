@@ -1,0 +1,57 @@
+public class contaBancaria {
+    
+    private int numero;
+    private Cliente cliente;
+    private double saldo;
+    private double transfLimite;
+    private double transfSaque;
+    
+    public contaBancaria( int numero, Cliente cliente, double saldo, double transfLimite, double transfSaque){
+        this.numero = numero;
+        this.cliente = cliente;
+        this.saldo = saldo;
+        this.transfLimite = transfLimite;
+        this.transfSaque = transfSaque;
+    }
+    
+    public int getNumero(){
+        return this.numero;
+    }
+    
+    public void setNumero(int numero){
+        this.numero = numero;
+    }
+    
+    public Cliente getCliente(){
+        return this.cliente;
+    }
+    
+    public void setCliente(Cliente cliente){
+        this.cliente = cliente;
+    }
+    
+    public double getSaldo(){
+        return this.saldo;
+    }
+    
+    public void setSaldo(int saldo){
+        this.saldo = saldo;
+    }
+    
+    public double gettransfLimite(){
+        return this.transfLimite;
+    }
+    
+    public void settransfLimite(int transfLimite){
+        this.transfLimite = transfLimite;
+    }
+    
+    public double gettransfSaque(){
+        return this.transfSaque;
+    }
+    
+    public void settransfSaque(int transfSaque){
+        this.transfSaque = transfSaque;
+    }
+       
+}
